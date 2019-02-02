@@ -1,0 +1,32 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+#defining directory
+os.chdir('C:/Users/LM 617/Desktop/')
+
+#reading the csv file
+
+Q1=pd.read_csv('Bikeshare Ridership (2017 Q1).csv',low_memory=False)
+Q2=pd.read_csv('Bikeshare Ridership (2017 Q2).csv',low_memory=False)
+Q3=pd.read_csv('Bikeshare Ridership (2017 Q3).csv',low_memory=False)
+
+Q1_use=Q1.shape[0]
+Q2_use=Q2.shape[0]
+Q3_use=Q3.shape[0]
+
+objects = ('Q1', 'Q2', 'Q3')
+y_pos = np.arange(len(objects))
+period = [Q1_use/100000,Q2_use/100000,Q3_use/100000]
+
+
+ 
+plt.bar(y_pos, period , align='center', alpha=0.5, color='r')
+plt.xticks(y_pos, objects)
+plt.ylabel('Usage(*10^5)')
+plt.xlabel('Period')
+plt.title('Population of Bike Share users')
+
+
+plt.show()
